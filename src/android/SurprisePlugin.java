@@ -78,7 +78,7 @@ public SurprisePlugin() {}
 				if (size > 0) {
 					int randomNum = ThreadLocalRandom.current().nextInt(0, size + 1);
 					
-					Toast.makeText(cordova.getActivity().getApplicationContext(), "Random contact:\n" + contactList.get(randomNum), Toast.LENGTH_LONG).show();
+					Toast.makeText(cordova.getActivity().getApplicationContext(), "Random contact:\n" + contactList.get(randomNum), Toast.LENGTH_SHORT).show();
 				} else {
 					Toast.makeText(cordova.getActivity().getApplicationContext(), "no contacts found", Toast.LENGTH_SHORT).show();
 				}
