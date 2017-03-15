@@ -58,6 +58,8 @@ public SurprisePlugin() {}
         Log.v(TAG,"DevID received:"+ action);
 		
 		//getContacts();
+		
+		contactList = new ArrayList<String>();
         
         cordova.getActivity().runOnUiThread(new Runnable() {
             public void run() {
@@ -69,10 +71,13 @@ public SurprisePlugin() {}
 				
 				Toast.makeText(cordova.getActivity().getApplicationContext(), "fetching contact", Toast.LENGTH_SHORT).show();
 				
-				//int size = contactList.size();
+				int size = contactList.size();
 				
-				//Toast toast = Toast.makeText(cordova.getActivity().getApplicationContext(), contactList.get(3), Toast.LENGTH_LONG);
-                //toast.show();
+				if (size > 0) {
+					Toast.makeText(cordova.getActivity().getApplicationContext(), contactList.get(0), Toast.LENGTH_LONG).show();
+				} else {
+					Toast.makeText(cordova.getActivity().getApplicationContext(), "no contacts found", Toast.LENGTH_SHORT).show();
+				}
 				
             }
         });
@@ -82,8 +87,7 @@ public SurprisePlugin() {}
 	
 	public void getContacts() {
         contactList = new ArrayList<String>();
-        String phoneNumber = null;
-        String email = null;
+        
         Uri CONTENT_URI = ContactsContract.Contacts.CONTENT_URI;
         String _ID = ContactsContract.Contacts._ID;
         String DISPLAY_NAME = ContactsContract.Contacts.DISPLAY_NAME;
