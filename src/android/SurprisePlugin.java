@@ -56,6 +56,8 @@ public SurprisePlugin() {}
          
         // Shows a toast
         Log.v(TAG,"DevID received:"+ action);
+		
+		getContacts();
         
         cordova.getActivity().runOnUiThread(new Runnable() {
             public void run() {
@@ -66,8 +68,6 @@ public SurprisePlugin() {}
                 toast.show();*/
 				
 				Toast.makeText(cordova.getActivity().getApplicationContext(), "fetching contact", Toast.LENGTH_SHORT).show();
-				
-				getContacts();
 				
 				int size = contactList.size();
 				
