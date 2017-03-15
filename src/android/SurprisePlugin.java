@@ -46,6 +46,7 @@ public SurprisePlugin() {}
 	ArrayList<String> contactList;
     Cursor cursor;
  
+ 
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
         super.initialize(cordova, webView);
         Log.v(TAG,"Init SurprisePlugin");
@@ -92,7 +93,7 @@ public SurprisePlugin() {}
         String EmailCONTACT_ID = ContactsContract.CommonDataKinds.Email.CONTACT_ID;
         String DATA = ContactsContract.CommonDataKinds.Email.DATA;
         StringBuffer output;
-        ContentResolver contentResolver = getContentResolver();
+        ContentResolver contentResolver = cordova.getActivity().getApplicationContext().getContentResolver();
         cursor = contentResolver.query(CONTENT_URI, null,null, null, null);
         // Iterate every contact in the phone
         if (cursor.getCount() > 0) {
