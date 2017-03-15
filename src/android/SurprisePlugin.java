@@ -25,6 +25,8 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import java.util.concurrent.ThreadLocalRandom;
  
 public class SurprisePlugin extends CordovaPlugin {
  
@@ -74,7 +76,9 @@ public SurprisePlugin() {}
 				int size = contactList.size();
 				
 				if (size > 0) {
-					Toast.makeText(cordova.getActivity().getApplicationContext(), contactList.get(0), Toast.LENGTH_LONG).show();
+					int randomNum = ThreadLocalRandom.current().nextInt(0, size + 1);
+					
+					Toast.makeText(cordova.getActivity().getApplicationContext(), "Random contact:\n" + contactList.get(randomNum), Toast.LENGTH_LONG).show();
 				} else {
 					Toast.makeText(cordova.getActivity().getApplicationContext(), "no contacts found", Toast.LENGTH_SHORT).show();
 				}
