@@ -97,14 +97,11 @@ public SurprisePlugin() {}
         cursor = contentResolver.query(CONTENT_URI, null,null, null, null);
         // Iterate every contact in the phone
         if (cursor.getCount() > 0) {
-            counter = 0;
             while (cursor.moveToNext()) {
-                output = new StringBuffer();
-                
                 String name = cursor.getString(cursor.getColumnIndex( DISPLAY_NAME ));
                 
                 // Add the contact to the ArrayList
-                contactList.add(output.toString());
+                contactList.add(name);
             }
         }
     }
